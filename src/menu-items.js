@@ -54,6 +54,13 @@ export default {
           icon: icons['ChromeReaderModeOutlinedIcon']
         },
         {
+          id: 'officials-list',
+          title: 'Officials List',
+          type: 'item',
+          url: '/officials-list',
+          icon: icons['ChromeReaderModeOutlinedIcon']
+        },
+        {
           id: 'auth',
           title: 'Authentication',
           type: 'collapse',

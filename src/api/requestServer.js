@@ -2,7 +2,11 @@ import axios from 'axios';
 const API_URL = process.env.REACT_APP_API_URL;
 export const requestPost = async (URL, Body) => {
   try {
-    const res = await axios.post(API_URL + URL, Body);
+    const formData = new FormData();
+    for (const key in Body) {
+      formData.append(key, Body[key]);
+    }
+    const res = await axios.post(API_URL + URL, formData);
     return res.data;
   } catch (error) {
     return error;
