@@ -1,0 +1,24 @@
+@import 'themes-vars';
+@import 'plugins/plugins';
+
+/* breadcrumb */
+.link-breadcrumb {
+  font-size: 0.75rem;
+  display: flex;
+  text-decoration: none;
+}
+
+/* card */
+
+.card-header {
+  font-weight: 800 !important;
+  font-size: 20px;
+}
+.card-sub-header {
+  font-weight: 600 !important;
+  font-size: 16px;
+}
+
+.apexcharts-legend-marker {
+  margin-right: 8px !important;
+}

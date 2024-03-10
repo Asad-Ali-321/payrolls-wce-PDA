@@ -1,0 +1,95 @@
+.css-11lq3yg-MuiGrid-root {
+  display: block;
+}
+.css-c8vj9l-MuiButtonBase-root-MuiMenuItem-root {
+  padding: 2px 16px;
+  font-size: 16px;
+}
+.action-icons-font-size {
+  font-size: 16px;
+  margin-right: 10px;
+}
+.MuiDataGrid-footerContainer {
+  display: none;
+}
+/* .css-1wxaqej {
+  width: 100%;
+} */
+
+.css-1d3bbye {
+  display: block !important;
+}
+
+.page_404 {
+  padding: 40px 0;
+  background: #fff;
+  font-family: 'Arvo', serif;
+  text-align: center;
+}
+
+.page_404 img {
+  width: 100%;
+}
+
+.four_zero_four_bg {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+}
+
+.four_zero_four_bg h1 {
+  font-size: 80px;
+}
+
+.four_zero_four_bg h3 {
+  font-size: 80px;
+}
+
+.link_404 {
+  color: #fff !important;
+  padding: 10px 20px;
+  background: #39ac31;
+  margin: 20px 0;
+  display: inline-block;
+}
+.contant_box_404 {
+  margin-top: -50px;
+}
+
+.comment-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.chain {
+  border-left: 2px dashed gray;
+  position: absolute;
+  height: 50%;
+  left: 11px; /* for you to adjust and line up */
+}
+
+.chain-top {
+  top: 0;
+}
+
+.chain-bottom {
+  top: 50%;
+}
+
+.comment {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin: 50px 0; /* increase vertical margin to see that I scale with different sizes */
+  max-width: 300px;
+}
+
+.comment-icon {
+  font-size: 32px;
+  margin-right: 16px;
+  background: white;
+  color: gray;
+  z-index: 10;
+}
+
