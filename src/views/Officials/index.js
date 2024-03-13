@@ -65,7 +65,6 @@ const Officials = () => {
     columns,
     data: rows,
     getRowId: (row) => row.official_id,
-    enableRowSelection: true,
     enableRowActions: true,
     enableStickyHeader: true,
     enableStickyFooter: true,

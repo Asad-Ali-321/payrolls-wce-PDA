@@ -1,5 +1,3 @@
-
-
 export const defaultInputProps = {
   variant: 'outlined',
   size: 'medium',
@@ -27,3 +25,5 @@ export const directorates = [
   'LAC',
   'Legal Section'
 ];
+export const userStatuses = ['active', 'block'];
+export const userRole = ['operator', 'admin', 'director'];

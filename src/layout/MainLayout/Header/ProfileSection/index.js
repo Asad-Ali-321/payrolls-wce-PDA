@@ -11,18 +11,23 @@ import LockOpenTwoTone from '@mui/icons-material/LockOpenTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import MeetingRoomTwoToneIcon from '@mui/icons-material/MeetingRoomTwoTone';
-
+import { useNavigate } from 'react-router';
 
 // ==============================|| PROFILE SECTION ||============================== //
 
 const ProfileSection = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  
-  
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    navigate('/');
+  };
+
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
   };
@@ -125,7 +130,7 @@ const ProfileSection = () => {
                     <ListItemIcon>
                       <MeetingRoomTwoToneIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Logout" />
+                    <ListItemText onClick={handleLogOut} primary="Logout" />
                   </ListItemButton>
                 </List>
               </ClickAwayListener>

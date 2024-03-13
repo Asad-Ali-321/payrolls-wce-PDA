@@ -1,4 +1,4 @@
-import { Box, Button, CircularProgress, TextField, Typography } from '@mui/material';
+import { Box,  CircularProgress, TextField, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import {
   MRT_GlobalFilterTextField,
@@ -6,14 +6,13 @@ import {
   MRT_ToggleDensePaddingButton,
   MRT_ToggleFiltersButton
 } from 'material-react-table';
-import DownloadIcon from '@mui/icons-material/Download';
 import { useEffect, useRef } from 'react';
-import { CSVLink } from 'react-csv';
 import { currentMonth } from 'api/customFunction';
+import ExportCSVButton from 'component/ExportCSV';
 
 const TableHeader = (props) => {
   const { table, isLoading, loadingText, submitForm, formSubmitted, onMonthChange, data } = props;
-  const buttonRef = useRef(null);
+  const submitButtonRef = useRef(null);
 
   const maxMonth = currentMonth();
 
@@ -23,7 +22,7 @@ const TableHeader = (props) => {
   };
 
   useEffect(() => {
-    if (submitForm) buttonRef.current.click();
+    if (submitForm) submitButtonRef.current.click();
 
     formSubmitted(false);
   }, [submitForm]);
@@ -45,7 +44,7 @@ const TableHeader = (props) => {
               variant="standard"
               type="month"
             ></TextField>
-            <button type="submit" ref={buttonRef} hidden>
+            <button type="submit" ref={submitButtonRef} hidden>
               as
             </button>
           </form>
@@ -54,21 +53,10 @@ const TableHeader = (props) => {
           <MRT_GlobalFilterTextField style={{ float: 'right', textAlign: 'center', marginLeft: '0.5rem' }} table={table} />
         </div>
         <div>
-          <Button startIcon={<DownloadIcon />}>
-            <CSVLink
-              data={data}
-              style={{ textDecoration: 'none', cursor: 'pointer' }}
-              filename={'pay_roll_system_generated.csv'}
-              title="export payroll"
-            >
-              Export
-            </CSVLink>
-          </Button>
-
+          <ExportCSVButton data={data} fileName="payroll" />
           <MRT_ToggleDensePaddingButton table={table} />
           <MRT_ToggleFiltersButton table={table} />
           <MRT_ShowHideColumnsButton table={table} />
-
           {isLoading ? (
             <div style={{ float: 'right', textAlign: 'center', marginLeft: '0.5rem' }}>
               <CircularProgress size={'1rem'} />

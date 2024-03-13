@@ -1,9 +1,5 @@
 const { requestPost, requestGet } = require('./requestServer');
 
-const queries = {
-  directorates: 'SELECT directorate FROM USERS GROUP BY directorate ORDER BY directorate ASC'
-};
-
 export const getOfficials = async () => {
   try {
     const res = await requestGet('officials');
@@ -12,6 +8,7 @@ export const getOfficials = async () => {
     return { status: false };
   }
 };
+
 export const getOne = async (official_id) => {
   try {
     const res = await requestGet('officials/getOne/' + official_id);

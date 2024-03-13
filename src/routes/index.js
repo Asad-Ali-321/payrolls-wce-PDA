@@ -1,11 +1,7 @@
-import { useRoutes } from 'react-router-dom';
+// ThemeRoutes.js
+import RoutingDirectory from './RoutingDirectory';
 
-// routes
-import MainRoutes from './MainRoutes';
-import AuthenticationRoutes from './AuthenticationRoutes';
-
-// ==============================|| ROUTING RENDER ||============================== //
-
+// Wrap both Protected and Public routes within a single BrowserRouter
 export default function ThemeRoutes() {
-  return useRoutes([MainRoutes, AuthenticationRoutes]);
+  return RoutingDirectory;
 }

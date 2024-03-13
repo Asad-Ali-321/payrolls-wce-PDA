@@ -26,7 +26,7 @@ const PayRolls = () => {
     setLoadingText('');
     setIsLoading(false);
   };
-  
+
   const handleAttendanceChanged = (official_id, value) => {
     setSubmitForm(true);
     setRows((prevRows) =>
@@ -165,7 +165,7 @@ const PayRolls = () => {
     )
   });
 
-  return <MaterialReactTable table={table} />;
+  return <MaterialReactTable className="print-section" table={table} />;
 };
 
 PayRolls.propTypes = {};

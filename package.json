@@ -38,6 +38,7 @@
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-scrollbar": "^0.5.6",
+    "react-to-print": "^2.15.1",
     "react-toastify": "^10.0.4",
     "redux": "^4.2.1",
     "stream-browserify": "^3.0.0",

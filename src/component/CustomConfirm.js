@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
-import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
+import BeenhereIcon from '@mui/icons-material/Beenhere';
 import PropTypes from 'prop-types';
 import { Stack } from '@mui/material';
 
@@ -14,7 +14,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-export default function ConfirmBox(props) {
+export default function CustomConfirmBox(props) {
   const [open, setOpen] = React.useState(props.open);
 
   React.useEffect(() => {
@@ -36,15 +36,17 @@ export default function ConfirmBox(props) {
       >
         <DialogTitle variant="h3">{'WCE Payroll App'}</DialogTitle>
         <DialogContent style={{ textAlign: 'center' }}>
-          <DeleteSweepIcon color="error" style={{ fontSize: '5rem' }} />
-          <DialogContentText id="alert-dialog-slide-description">Are you sure to delete</DialogContentText>
+          <BeenhereIcon color="primary" style={{ fontSize: '5rem' }} />
+          <DialogContentText id="alert-dialog-slide-description">
+            {props.message ? props.message : 'Are you sure to continue'}
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Stack direction="row" spacing={2} justifyContent="space-between" width="100%">
             <Button onClick={props.onDisAgree} color="primary">
               Disagree
             </Button>
-            <Button onClick={props.onAgree} color="error">
+            <Button onClick={props.onAgree} color="success">
               Agree
             </Button>
           </Stack>
@@ -54,8 +56,9 @@ export default function ConfirmBox(props) {
   );
 }
 
-ConfirmBox.propTypes = {
+CustomConfirmBox.propTypes = {
   open: PropTypes.bool.isRequired,
+  message: PropTypes.string,
   onAgree: PropTypes.func.isRequired,
   onDisAgree: PropTypes.func.isRequired
 };
