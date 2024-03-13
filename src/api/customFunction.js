@@ -1,24 +1,8 @@
-import { requestGet, requestPost } from './requestServer';
-
-export const typeAndCountryWiseUsers = async (countries, type) => {
-  try {
-    const res = await requestPost('users/type-and-country-wise-users', { countries: countries.join(','), type: type });
-    return res.data;
-  } catch (error) {
-    return false; // Return false in case of an error
-  }
-};
-export const stateWiseCities = async (state) => {
-  try {
-    const res = await requestGet('cities/state-wise-cities/' + state);
-    return res.data;
-  } catch (error) {
-    return false; // Return false in case of an error
-  }
-};
+import { requestPost } from './requestServer';
 
 export const deleteRecord = async (collection, condition) => {
   try {
+    
     return await requestPost('Crud/delete', {
       collection: collection,
       where: condition
@@ -26,4 +10,17 @@ export const deleteRecord = async (collection, condition) => {
   } catch (error) {
     return false; // Return false in case of an error
   }
+};
+
+export const getDaysInMonth = (year, month) => {
+  const lastDayOfMonth = new Date(year, month + 1, 0);
+  // Get the day of the month (0-31)
+  return lastDayOfMonth.getDate();
+};
+
+export const currentMonth = () => {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1;
+  return `${currentYear}-${currentMonth.toString().padStart(2, '0')}`;
 };

@@ -14,7 +14,7 @@ const TableSearch = (props) => {
     setLoading(true);
     getDirectorates().then((res) => {
       if (res.status) {
-        debugger;
+        
         setDirectorates(res.data);
         setLoading(false);
       }

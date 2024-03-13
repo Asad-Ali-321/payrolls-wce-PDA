@@ -3,11 +3,11 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import PropTypes from 'prop-types';
 import { Alert, Button, CircularProgress, Grid, Stack, TextField, useTheme } from '@mui/material';
-import { clientStatus, defaultInputProps } from 'component/config';
 import CloseIcon from '@mui/icons-material/Close';
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
 import { UploadFile } from 'component/uploadButton';
 import { requestPost } from 'api/requestServer';
+import { defaultInputProps } from 'component/config';
 
 const style = {
   position: 'absolute',
@@ -26,7 +26,7 @@ const style = {
 const Create = (props) => {
   const { open, onClose, onSuccess } = props;
   const theme = useTheme();
-  const [userData, setUserData] = React.useState({ password: 123456, client_status: clientStatus[0] });
+  const [userData, setUserData] = React.useState({});
   const [alert, setAlert] = React.useState(false);
   const [alertMessage, setAlertMessage] = React.useState('');
   const [loading, setLoading] = React.useState(false);
@@ -54,7 +54,6 @@ const Create = (props) => {
     formData.append('address', userData.address || '');
     formData.append('client_status', userData.client_status || '');
 
-    formData.append('firestore_id', firebaseDoc.id || '');
 
     if (file) formData.append('file', file, file.name);
     requestPost('users', formData).then((res) => {

@@ -93,3 +93,15 @@
   z-index: 10;
 }
 
+::-webkit-scrollbar {
+  right: 0;
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  width: 12px;
+  height: 12px;
+}

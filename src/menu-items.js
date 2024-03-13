@@ -54,6 +54,13 @@ export default {
           icon: icons['ChromeReaderModeOutlinedIcon']
         },
         {
+          id: 'pay-rolls',
+          title: 'Pay Rolls',
+          type: 'item',
+          url: '/pay-rolls',
+          icon: icons['ChromeReaderModeOutlinedIcon']
+        },
+        {
           id: 'officials-list',
           title: 'Officials List',
           type: 'item',

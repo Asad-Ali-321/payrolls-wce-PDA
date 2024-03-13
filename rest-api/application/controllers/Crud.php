@@ -63,18 +63,7 @@ class Crud extends CI_Controller
 
 	public function delete()
 	{
-		try {
-			$WHERE = $this->getHeaderAndValuesWhere($_POST['where']);
-			if (!$WHERE)
-				return ['status' => false, 'error' => 'where condition is mandatory for delete'];
-			$SQL = 'DELETE FROM ' . $_POST['collection'];
-			$SQL = $WHERE ? $SQL . ' WHERE ' . $WHERE : $SQL;
-			$results = $this->db->query($SQL);
-			return ['status' => true, 'data' => $results];
-		} catch (Exception $error) {
-			echo 'Error occurred while executing query: ' . $error->getMessage() . '<br>';
-			return ['status' => false, 'error' => $error->getMessage()];
-		}
+		echo json_encode($this->crud_model->delete($_POST));
 	}
 
 	public function update()

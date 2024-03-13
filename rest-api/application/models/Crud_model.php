@@ -76,15 +76,19 @@ class Crud_model extends CI_Model
 	public function delete($body)
 	{
 		try {
+			if (!isset($body['collection']))    throw new Exception("collection name must required");
+			if (!isset($body['where']))    throw new Exception("where condition is mandatory for delete");
+
 			$WHERE = $this->getHeaderAndValuesWhere($body['where']);
-			if (!$WHERE)
-				return ['status' => false, 'error' => 'where condition is mandatory for delete'];
 			$SQL = 'DELETE FROM ' . $body['collection'];
 			$SQL = $WHERE ? $SQL . ' WHERE ' . $WHERE : $SQL;
-			$results = $this->crudModel->query($SQL);
-			return ['status' => true, 'data' => $results];
+
+			$query = $this->db->query($SQL);
+			if ($query === false) throw new Exception($this->db->error()['message']);
+
+			if (!empty($query))
+				return ['status' => true, 'data' => 'record removed'];
 		} catch (Exception $error) {
-			echo 'Error occurred while executing query: ' . $error->getMessage() . '<br>';
 			return ['status' => false, 'error' => $error->getMessage()];
 		}
 	}
@@ -117,11 +121,29 @@ class Crud_model extends CI_Model
 
 	public function getHeaderAndValuesWhere($data)
 	{
+		// print_r($data);
+		// $data = json_decode($data, true);
+		// print_r($data);
+		// die();
 		try {
-			$keyValuePairs = array_map(function ($key, $value) {
-				return "`$key`='$value'";
-			}, array_keys($data), array_map([$this, 'stringCast'], $data));
-			return implode(',', $keyValuePairs);
+			$data = '{user_id:1}';
+
+			// Remove the curly braces from the string
+			$data = trim($data, '{}');
+
+			// Split the string into key and value
+			list($key, $value) = explode(':', $data, 2);
+
+			// Assuming $value needs to be casted to an integer
+			$value = $this->stringCast($value);
+
+			// Build the key-value pair
+			$keyValuePairs = ["`$key`='$value'"];
+
+			// Join the key-value pairs into a string
+			$result = implode(',', $keyValuePairs);
+
+			return $result;
 		} catch (Exception $error) {
 			return false;
 		}

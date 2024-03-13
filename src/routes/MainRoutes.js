@@ -4,9 +4,9 @@ import React, { lazy } from 'react';
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'component/Loadable';
 import Officials from 'views/Officials';
+import PayRolls from 'views/Payroll';
 
 const DashboardDefault = Loadable(lazy(() => import('../views/Dashboard')));
-
 
 const SamplePage = Loadable(lazy(() => import('../views/SamplePage')));
 
@@ -23,7 +23,9 @@ const MainRoutes = {
     { path: '/sample-page', element: <SamplePage /> },
 
     // Officials
-    { path: '/officials-list', element: <Officials /> }
+    { path: '/officials-list', element: <Officials /> },
+    // Pay Rolls
+    { path: '/pay-rolls', element: <PayRolls /> }
   ]
 };
 

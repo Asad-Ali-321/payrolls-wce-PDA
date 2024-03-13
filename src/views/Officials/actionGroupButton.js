@@ -9,7 +9,6 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import RemoveIcon from '@mui/icons-material/Remove';
 const ActionGroupButton = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  debugger
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -25,6 +24,7 @@ const ActionGroupButton = (props) => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        style={{ height: '10px' }}
       >
         <MoreVertIcon />
         Options
@@ -42,7 +42,7 @@ const ActionGroupButton = (props) => {
         <MenuItem
           key={1}
           onClick={() => {
-            props.onEdit(props.row.id);
+            props.onEdit(parseInt(props.row.id));
             handleClose();
           }}
         >
@@ -51,7 +51,7 @@ const ActionGroupButton = (props) => {
         <MenuItem
           key={2}
           onClick={() => {
-            props.onDelete(props.row.id);
+            props.onDelete(parseInt(props.row.id));
             handleClose();
           }}
         >
