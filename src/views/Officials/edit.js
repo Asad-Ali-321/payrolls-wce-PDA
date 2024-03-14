@@ -35,32 +35,23 @@ const Edit = (props) => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
   };
+
   React.useEffect(() => {
     getData();
   }, [props._id]);
+
   const getData = async () => {
     if (props._id && props._id != 0)
       await getOne(_id).then((res) => {
         setUserData(res);
       });
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    ///default value for the senior
-    const formData = new FormData();
 
-    formData.append('official_id', userData.official_id || '');
-    formData.append('official_name', userData.official_name || '');
-    formData.append('father_name', userData.father_name || '');
-    formData.append('designation', userData.designation || '');
-    formData.append('cnic', userData.cnic || '');
-    formData.append('directorate', userData.directorate || '');
-    formData.append('chargeable_head', userData.chargeable_head || '');
-    formData.append('monthly_pay', userData.monthly_pay || '');
-    formData.append('file_no', userData.file_no || '');
-
-    requestPost('officials/update', formData).then(() => {
+    requestPost('officials/update', userData).then(() => {
       onSuccess();
       toast.success('updated');
       setUserData({});

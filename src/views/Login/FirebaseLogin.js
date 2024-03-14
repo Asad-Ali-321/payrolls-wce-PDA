@@ -40,7 +40,8 @@ const FirebaseLogin = () => {
     event.preventDefault();
     setIsSubmitting(true);
     requestPost('auth/validate', values).then((res) => {
-      if (res && res.status != 'active') toast.error('account blocked');
+      if (res && res.code == 'ERR_NETWORK') toast.error('network error');
+      else if (res && res.status != 'active') toast.error('account blocked');
       else if (res && res.status == 'active') {
         localStorage.setItem('user', JSON.stringify(res));
         navigate('/dashboard');

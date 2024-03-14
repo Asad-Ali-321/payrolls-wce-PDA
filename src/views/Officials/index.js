@@ -14,11 +14,17 @@ const Officials = () => {
   const [_delete, set_delete] = useState(false);
   const [selectedID, setSelectedID] = useState(0);
   const [edit, setEdit] = useState(false);
+
   const columns = useMemo(
     () => [
       {
         accessorKey: 'file_no', //access nested data with dot notation
         header: 'File#',
+        size: 15
+      },
+      {
+        accessorKey: 'cnic', //access nested data with dot notation
+        header: 'CNIC',
         size: 15
       },
       {
@@ -44,6 +50,11 @@ const Officials = () => {
       {
         accessorKey: 'chargeable_head',
         header: 'Chargeable Head',
+        size: 30
+      },
+      {
+        accessorKey: 'income_tax_applied',
+        header: 'Tax Applied',
         size: 30
       },
       {
@@ -87,6 +98,7 @@ const Officials = () => {
       />
     )
   });
+
   const DeleteRecord = async () => {
     deleteByID(selectedID).then(() => {
       set_delete(false);
@@ -110,10 +122,12 @@ const Officials = () => {
         open={edit}
         onClose={() => {
           setEdit(false);
+          setSelectedID(0);
         }}
         onSuccess={() => {
           setRefresh(!refresh);
           setEdit(false);
+          setSelectedID(0);
         }}
       />
       <MaterialReactTable table={table} />

@@ -18,12 +18,12 @@ export const updateRow = async (month, row) => {
       income_tax: row.income_tax,
       attendance: row.attendance,
       deductions: row.deductions,
-      net_salary: row.net_salary
+      net_salary: row.net_salary,
+      remarks: row.remarks
     };
     const res = await requestPost('pay_rolls/updateRow/', body);
     return res;
   } catch (error) {
-    
     return { status: false };
   }
 };

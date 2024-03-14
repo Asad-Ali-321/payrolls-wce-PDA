@@ -1,17 +1,15 @@
-import { Box,  CircularProgress, TextField, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Divider, TextField, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
-import {
-  MRT_GlobalFilterTextField,
-  MRT_ShowHideColumnsButton,
-  MRT_ToggleDensePaddingButton,
-  MRT_ToggleFiltersButton
-} from 'material-react-table';
+import { MRT_GlobalFilterTextField, MRT_ShowHideColumnsButton } from 'material-react-table';
+import PrintIcon from '@mui/icons-material/Print';
 import { useEffect, useRef } from 'react';
 import { currentMonth } from 'api/customFunction';
 import ExportCSVButton from 'component/ExportCSV';
+import { useNavigate } from 'react-router';
 
 const TableHeader = (props) => {
   const { table, isLoading, loadingText, submitForm, formSubmitted, onMonthChange, data } = props;
+  const navigate = useNavigate();
   const submitButtonRef = useRef(null);
 
   const maxMonth = currentMonth();
@@ -49,22 +47,32 @@ const TableHeader = (props) => {
             </button>
           </form>
         </div>
-        <div display="flex">
-          <MRT_GlobalFilterTextField style={{ float: 'right', textAlign: 'center', marginLeft: '0.5rem' }} table={table} />
-        </div>
+
         <div>
-          <ExportCSVButton data={data} fileName="payroll" />
-          <MRT_ToggleDensePaddingButton table={table} />
-          <MRT_ToggleFiltersButton table={table} />
-          <MRT_ShowHideColumnsButton table={table} />
           {isLoading ? (
-            <div style={{ float: 'right', textAlign: 'center', marginLeft: '0.5rem' }}>
+            <Typography color={'primary'} mt={1} style={{ float: 'right', textAlign: 'center', marginLeft: '0.5rem' }}>
               <CircularProgress size={'1rem'} />
-              <Typography color={'primary'}> {loadingText}</Typography>
-            </div>
+              {loadingText}
+            </Typography>
           ) : (
             ''
           )}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Button
+            startIcon={<PrintIcon />}
+            onClick={() => {
+              navigate('/pay-rolls/print/' + maxMonth);
+            }}
+          >
+            Print
+          </Button>
+          <Divider orientation="vertical" style={{ margin: '0px 8px' }} flexItem />
+          <ExportCSVButton data={data} fileName="payroll" />
+          <Divider orientation="vertical" style={{ margin: '0px 8px' }} flexItem />
+          <MRT_GlobalFilterTextField table={table} />
+          <Divider orientation="vertical" style={{ margin: '0px 8px' }} flexItem />
+          <MRT_ShowHideColumnsButton table={table} />
         </div>
       </Box>
     </>

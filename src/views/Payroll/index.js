@@ -51,6 +51,18 @@ const PayRolls = () => {
     resetLoading();
   };
 
+  const handleRemarksChanged = async (official_id, value) => {
+    setSubmitForm(true);
+    setRows((prevRows) =>
+      prevRows.map((row) => {
+        if (row.official_id === official_id) return { ...row, remarks: value };
+        return row;
+      })
+    );
+    setOfficial_id(official_id);
+    resetLoading();
+  };
+
   useEffect(() => {
     if (official_id !== 0 && month != '')
       updateRow(
@@ -126,11 +138,22 @@ const PayRolls = () => {
           }
         })
       },
-
       {
         accessorKey: 'net_salary',
         header: 'Net Salary',
         enableEditing: false
+      },
+      {
+        accessorKey: 'remarks',
+        header: 'Remarks',
+        muiEditTextFieldProps: ({ row }) => ({
+          type: 'text',
+          onBlur: (event) => {
+            setIsLoading(true);
+            setLoadingText('updating..');
+            handleRemarksChanged(row.id, event.target.value);
+          }
+        })
       }
     ],
     []

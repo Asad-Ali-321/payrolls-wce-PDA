@@ -20,6 +20,7 @@ const RoutingDirectory = (
   <Routes>
     <Route element={<RouterAuth />}>
       <Route element={<MainLayout />}>
+        <Route path="*" element={<DashboardDefault />} />
         <Route path="/dashboard" element={<DashboardDefault />} />
         <Route path="/sample-page" element={<SamplePage />} />
 
@@ -31,7 +32,7 @@ const RoutingDirectory = (
         <Route path="/users" element={<Users />} />
       </Route>
     </Route>
-    <Route path="*" element={<Login />} />
+    <Route path="/" element={<Login />} />
   </Routes>
 );
 

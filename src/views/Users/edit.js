@@ -38,18 +38,19 @@ const Edit = (props) => {
   React.useEffect(() => {
     getData();
   }, [props._id]);
+
   const getData = async () => {
     if (props._id && props._id != 0)
       await getOne(_id).then((res) => {
         setUserData(res);
       });
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
 
     requestPost('users/update', userData).then((res) => {
-      debugger
       if (res.code == 0) {
         onSuccess();
         toast.info('updated');
@@ -57,7 +58,6 @@ const Edit = (props) => {
       } else toast.error(res.message);
       setLoading(false);
     });
-    console.log(userData);
   };
 
   return (
