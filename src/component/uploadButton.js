@@ -15,13 +15,13 @@ const StyledContainer = styled(Card)`
   padding: 20px;
   border-radius: 20px;
   width: 100%;
-  height: 200px;
+  height: 150px;
   background-size: 100% 100%; // Cover the entire container
   background-repeat: no-repeat;
   background-image: url(${(props) => props.image});
 
   @media (min-width: 500px) {
-    width: 40%;
+    width: 50%;
   }
 `;
 
@@ -98,7 +98,7 @@ UploadFile.propTypes = {
   returnType: PropTypes.oneOf(['base64', 'file'])
 };
 UploadFile.defaultProps = {
-  label: 'Upload Image',
+  label: 'Upload',
   variant: 'contained',
   size: 'small',
   defaultImage: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'

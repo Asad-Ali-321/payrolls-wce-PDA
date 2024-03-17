@@ -11,10 +11,10 @@ const TableHeader = (props) => {
     <>
       <Box display="flex" style={{ margin: '0.5rem 1.5rem' }} justifyContent="space-between" alignItems="center">
         <div display="flex">
-          <Typography variant="h5">Employees List</Typography>
+          <Typography variant="h5">Designations List</Typography>
         </div>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <ExportCSVButton data={data} fileName="employees" />
+          <ExportCSVButton data={data} fileName="designations" />
           <Divider orientation="vertical" style={{ margin: '0px 8px' }} flexItem />
           <Button title="create new employee" onClick={onCreate} startIcon={<AddIcon />}>
             Create

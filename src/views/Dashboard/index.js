@@ -52,6 +52,7 @@ const Default = () => {
 
   const getDesignationWiseStaff = async () => {
     requestGet('Officials/designationWiseStaff').then((res) => {
+      debugger;
       if (res) setDesignationWiseStaff(res);
       else setDesignationWiseStaff([]);
     });

@@ -2,7 +2,6 @@ import { requestPost } from './requestServer';
 
 export const deleteRecord = async (collection, condition) => {
   try {
-    
     return await requestPost('Crud/delete', {
       collection: collection,
       where: condition
@@ -23,4 +22,12 @@ export const currentMonth = () => {
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth() + 1;
   return `${currentYear}-${currentMonth.toString().padStart(2, '0')}`;
+};
+
+export const daysCountInMonth = (monthYear) => {
+  const year = monthYear.split('-')[0];
+  const month = monthYear.split('-')[1];
+  // JavaScript months are zero-indexed (0 = January, 1 = February, ..., 11 = December)
+  // To get the last day of the month, set the day to 0 of the next month
+  return new Date(year, month + 1, 0).getDate();
 };

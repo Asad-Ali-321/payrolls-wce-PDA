@@ -90,7 +90,7 @@ export const Print = () => {
                         <TableRow>
                           <TableCell align="center">S.no</TableCell>
                           <TableCell align="left">cnic</TableCell>
-                          <TableCell align="left">Official Name</TableCell>
+                          <TableCell align="left">Employee Name</TableCell>
                           <TableCell align="left">Father Name</TableCell>
                           <TableCell align="left">Designation</TableCell>
                           <TableCell align="left">Directorate</TableCell>

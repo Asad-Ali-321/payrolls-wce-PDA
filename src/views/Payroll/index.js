@@ -27,42 +27,6 @@ const PayRolls = () => {
     setIsLoading(false);
   };
 
-  const handleAttendanceChanged = (official_id, value) => {
-    setSubmitForm(true);
-    setRows((prevRows) =>
-      prevRows.map((row) => {
-        if (row.official_id === official_id) return { ...row, attendance: value };
-        return row;
-      })
-    );
-    setOfficial_id(official_id);
-    resetLoading();
-  };
-
-  const handleDeductionChanged = async (official_id, value) => {
-    setSubmitForm(true);
-    setRows((prevRows) =>
-      prevRows.map((row) => {
-        if (row.official_id === official_id) return { ...row, deductions: value, net_salary: row.monthly_pay - row.income_tax - value };
-        return row;
-      })
-    );
-    setOfficial_id(official_id);
-    resetLoading();
-  };
-
-  const handleRemarksChanged = async (official_id, value) => {
-    setSubmitForm(true);
-    setRows((prevRows) =>
-      prevRows.map((row) => {
-        if (row.official_id === official_id) return { ...row, remarks: value };
-        return row;
-      })
-    );
-    setOfficial_id(official_id);
-    resetLoading();
-  };
-
   useEffect(() => {
     if (official_id !== 0 && month != '')
       updateRow(
@@ -76,84 +40,135 @@ const PayRolls = () => {
   const columns = useMemo(
     () => [
       {
-        accessorKey: 'cnic', //access nested data with dot notation
-        header: 'cnic#',
+        accessorKey: 'file_no', //access nested data with dot notation
+        header: 'file_no',
         enableEditing: false
       },
       {
         accessorKey: 'official_name', //access nested data with dot notation
-        header: 'Full Name',
+        header: 'employee_name',
         enableEditing: false
       },
       {
         accessorKey: 'father_name', //access nested data with dot notation
-        header: 'Father Name',
+        header: 'father_name',
         enableEditing: false
       },
       {
-        accessorKey: 'designation', //normal accessorKey
-        header: 'Designation',
+        accessorKey: 'date_of_birth', //access nested data with dot notation
+        header: 'date_of_birth',
         enableEditing: false
       },
       {
-        accessorKey: 'directorate',
-        header: 'Directorate',
+        accessorKey: 'domicile', //access nested data with dot notation
+        header: 'domicile',
         enableEditing: false
       },
       {
-        accessorKey: 'monthly_pay',
-        header: 'Basic Pay',
-        enableEditing: false,
-        size: 15
-      },
-      {
-        accessorKey: 'income_tax',
-        header: 'Income Tax',
-        enableEditing: false,
-        size: 15
-      },
-      {
-        accessorKey: 'attendance',
-        header: 'Days Attended',
-        size: 15,
-        muiEditTextFieldProps: ({ row }) => ({
-          type: 'number',
-          onBlur: (event) => {
-            setIsLoading(true);
-            setLoadingText('updating..');
-            handleAttendanceChanged(row.id, event.target.value);
-          }
-        })
-      },
-      {
-        accessorKey: 'deductions',
-        header: 'Deductions',
-        size: 15,
-        muiEditTextFieldProps: ({ row }) => ({
-          type: 'number',
-          onBlur: (event) => {
-            setIsLoading(true);
-            setLoadingText('updating..');
-            handleDeductionChanged(row.id, event.target.value);
-          }
-        })
-      },
-      {
-        accessorKey: 'net_salary',
-        header: 'Net Salary',
+        accessorKey: 'cnic', //access nested data with dot notation
+        header: 'cnic',
         enableEditing: false
       },
       {
-        accessorKey: 'remarks',
-        header: 'Remarks',
-        muiEditTextFieldProps: ({ row }) => ({
-          type: 'text',
-          onBlur: (event) => {
-            setIsLoading(true);
-            setLoadingText('updating..');
-            handleRemarksChanged(row.id, event.target.value);
-          }
-        })
+        accessorKey: 'address', //access nested data with dot notation
+        header: 'address',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'contact', //access nested data with dot notation
+        header: 'contact',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'designation', //access nested data with dot notation
+        header: 'designation',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'directorate', //access nested data with dot notation
+        header: 'directorate',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'chargeable_head', //access nested data with dot notation
+        header: 'chargeable_head',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'monthly_pay', //access nested data with dot notation
+        header: 'monthly_pay',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'arrears', //access nested data with dot notation
+        header: 'arrears',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'over_time', //access nested data with dot notation
+        header: 'over_time',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'income_tax', //access nested data with dot notation
+        header: 'income_tax',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'union_fund', //access nested data with dot notation
+        header: 'union_fund',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'recovery', //access nested data with dot notation
+        header: 'recovery',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'absentees', //access nested data with dot notation
+        header: 'absentees',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'absentees_amount', //access nested data with dot notation
+        header: 'absentees_amount',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'gross_pay', //access nested data with dot notation
+        header: 'gross_pay',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'deductions', //access nested data with dot notation
+        header: 'deductions',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'net_salary', //access nested data with dot notation
+        header: 'net_salary',
+        enableEditing: false
+      },
+
+      {
+        accessorKey: 'bank_name', //access nested data with dot notation
+        header: 'bank_name',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'branch_code', //access nested data with dot notation
+        header: 'branch_code',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'account_number', //access nested data with dot notation
+        header: 'account_number',
+        enableEditing: false
+      },
+      {
+        accessorKey: 'remarks', //access nested data with dot notation
+        header: 'remarks',
+        enableEditing: false
       }
     ],
     []

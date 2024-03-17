@@ -6,7 +6,6 @@ export const requestPost = async (URL, Body) => {
     for (const key in Body) {
       formData.append(key, Body[key]);
     }
-    debugger
     const res = await axios.post(API_URL + URL, formData);
     return res.data;
   } catch (error) {

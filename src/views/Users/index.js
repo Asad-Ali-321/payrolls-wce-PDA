@@ -70,7 +70,6 @@ const Users = () => {
 
   useEffect(() => {
     getUsers().then((res) => {
-      debugger;
       setRows(res);
     });
   }, [refresh]);

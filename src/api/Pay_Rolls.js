@@ -27,3 +27,21 @@ export const updateRow = async (month, row) => {
     return { status: false };
   }
 };
+
+export const getEmployeePayroll = async (_file_no, _cnic, _month) => {
+  try {
+    const res = await requestPost('pay_rolls/getEmployeePayroll', { _file_no: _file_no, _cnic: _cnic, _month: _month });
+    return res;
+  } catch (error) {
+    return { status: false };
+  }
+};
+
+export const getByCnic = async (cnic, month) => {
+  try {
+    const res = await requestGet('pay_rolls/index/' + month);
+    return res;
+  } catch (error) {
+    return { status: false };
+  }
+};

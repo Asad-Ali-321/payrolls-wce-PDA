@@ -36,6 +36,7 @@ const Edit = (props) => {
     setUserData({ ...userData, [name]: value });
   };
   React.useEffect(() => {
+    alert(props._id);
     getData();
   }, [props._id]);
 

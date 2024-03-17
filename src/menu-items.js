@@ -7,7 +7,7 @@ import EngineeringIcon from '@mui/icons-material/Engineering';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import SsidChartIcon from '@mui/icons-material/SsidChart';
 import { currentMonth } from 'api/customFunction';
-
+import EditAttributesIcon from '@mui/icons-material/EditAttributes';
 // eslint-disable-next-line
 export default {
   items: [
@@ -40,12 +40,20 @@ export default {
           icon: PointOfSaleIcon,
           children: [
             {
-              id: 'create_update',
-              title: 'create & update',
+              id: 'view',
+              title: 'view',
               type: 'item',
               url: '/pay-rolls',
               target: false
             },
+            {
+              id: 'create',
+              title: 'manage',
+              type: 'item',
+              url: '/pay-rolls/create',
+              target: false
+            },
+
             {
               id: 'payroll_print',
               title: 'Print',
@@ -57,7 +65,7 @@ export default {
         },
         {
           id: 'officials-list',
-          title: 'Officials List',
+          title: 'Employees List',
           type: 'item',
           url: '/officials-list',
           icon: EngineeringIcon
@@ -68,6 +76,35 @@ export default {
           type: 'item',
           url: '/officials-list',
           icon: SsidChartIcon
+        }
+      ]
+    },
+    {
+      id: 'configurations',
+      title: 'Configurations',
+      type: 'group',
+      icon: NavigationOutlinedIcon,
+      children: [
+        {
+          id: 'designations',
+          title: 'Designations',
+          type: 'item',
+          url: '/designations',
+          icon: EditAttributesIcon
+        },
+        {
+          id: 'directorates',
+          title: 'Directorates',
+          type: 'item',
+          url: '/directorates',
+          icon: EditAttributesIcon
+        },
+        {
+          id: 'chargeable_heads',
+          title: 'Chargeable Heads',
+          type: 'item',
+          url: '/chargeable-heads',
+          icon: EditAttributesIcon
         }
       ]
     },
